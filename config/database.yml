@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: wastetime909
+
+development:
+  <<: *default
+  database: postgresql
+  database: telecounter
+  username: wastetime909
+
+test:
+  <<: *default
+  database: telecounter
