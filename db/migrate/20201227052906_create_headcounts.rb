@@ -7,6 +7,9 @@ class CreateHeadcounts < ActiveRecord::Migration[6.0]
       t.string :entrance_code
       t.string :exit_code 
       t.string :stamp
+      t.string :nickname
+      t.integer :pass_code
+      t.references :user, foreign_key: true 
 
       t.timestamps
     end

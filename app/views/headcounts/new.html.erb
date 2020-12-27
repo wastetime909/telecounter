@@ -1,0 +1,18 @@
+<div class='container mb-4 mt-4'>
+  <%= form_for @headcount do |p| %>
+      <ul class='list-group list-group-flush'>
+          <li class='list-group-item'>
+            <h4><%= p.label 'Assign a Nickname' %></h4>
+            <%= p.text_field :nickname, class: 'form-control' %>
+          </li>
+          <li class='list-group-item'>
+            <h4><%= p.label 'Set Maximum Number of Visitors Allowed' %></h4>
+            <%= p.number_field :max_count, class: 'form-control' %>
+          </li>
+          
+          <li class='list-group-item'>
+              <%= p.submit 'Create', class:'btn btn-outline-success' %>
+          </li>
+      </ul>
+  <% end %>
+</div>

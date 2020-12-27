@@ -1,2 +1,21 @@
-<h1>Pages#user_page</h1>
-<p>Find me in app/views/pages/user_page.html.erb</p>
+<div class='container mt-5'>
+    <% if !@headcount.blank? %>
+        <div class='row text-primary' id='current_count'>
+            <div data-controller="progress-bar">
+                <div id="<%= @headcount.stamp %>" data-target="progress-bar.progress_bar">
+                    <%= @headcount.current_count %>
+                </div>
+            </div>
+        </div>
+        <% if @entrance_user %>
+            <div class='row'>
+                <%= link_to '+ 1', headcounts_new_entrance_path(:id => @headcount.id), id: 'new_entrance', class: 'btn btn-outline-primary', remote: true %>
+            </div>
+        <% end %>
+        <% if @exit_user %>
+            <div class='row'>
+                <%= link_to '- 1', headcounts_new_exit_path(:id => @headcount.id), id: 'new_entrance', class: 'btn btn-outline-primary', remote: true %>
+            </div>
+        <% end %>
+    <% end %>
+</div>  
