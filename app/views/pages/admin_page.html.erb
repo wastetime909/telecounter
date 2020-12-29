@@ -1,2 +1,78 @@
-<h1>Pages#admin_page</h1>
-<p>Find me in app/views/pages/admin_page.html.erb</p>
+<style>
+    .greenCircle {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        padding-top: 45px;
+        background: #2ec97e;
+        border: 2px solid #2ec97e;
+        color: #fff;
+        text-align: center;
+        font: 25px Arial, sans-serif;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .greenCircle:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .blueCircle {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        padding-top: 45px;
+        background: #1f80e0;
+        border: 2px solid #1f80e0;
+        color: #fff;
+        text-align: center;
+        font: 25px Arial, sans-serif;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .blueCircle:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+<% if user_signed_in? %>
+    <div class="card text-center mt-5">
+        <div class="card-header">
+            Current Capacity: 
+            <span data-controller="progress-bar">
+                <span id="<%= @headcount.stamp %>" data-target="progress-bar.progress_bar">
+                    <%= @headcount.current_count %>
+                </span>
+            </span>
+        </div>
+        <div class="card-body">
+            <% if @unlock_type == 'entrance' || @unlock_type == 'both' %>
+                <p class="card-text">
+                    <%= link_to '+ 1', headcounts_new_entrance_path(:id => @headcount.stamp, :quant => 1), id: 'new_entrance', class:'blueCircle', remote: true %>
+                </p>
+                <p class="card-text">
+                    <%= link_to '+ 5', headcounts_new_entrance_path(:id => @headcount.stamp, :quant => 5), id: 'new_entrance', class:'blueCircle', remote: true %>
+                </p>
+                <p class="card-text">
+                    <%= link_to '+ 10', headcounts_new_entrance_path(:id => @headcount.stamp, :quant => 10), id: 'new_entrance', class:'blueCircle', remote: true %>
+                </p>
+            <% end %>
+            <% if @unlock_type == 'exit' || @unlock_type == 'both' %>
+                <p class="card-text">
+                    <%= link_to '- 1', headcounts_new_exit_path(:id => @headcount.stamp, :quant => 1), id: 'new_entrance', class: 'greenCircle', remote: true %>
+                </p>
+                <p class="card-text">
+                    <%= link_to '- 5', headcounts_new_exit_path(:id => @headcount.stamp, :quant => 5), id: 'new_entrance', class: 'greenCircle', remote: true %>
+                </p>
+                <p class="card-text">
+                    <%= link_to '- 10', headcounts_new_exit_path(:id => @headcount.stamp, :quant => 10), id: 'new_entrance', class: 'greenCircle', remote: true %>
+                </p>
+            <% end %>
+        </div>
+        <div class="card-footer text-muted">
+            <%= link_to 'Back', headcount_path(@headcount), class:'btn btn-success' %>
+        </div>
+    </div>
+<% end %>

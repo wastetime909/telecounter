@@ -1,0 +1,14 @@
+<div class='container text-center' style='margin-top: 25vh;'>
+    <% if user_signed_in? %>
+        <div class='row mb-5'>
+            <%= link_to 'Check/Create Counter', pages_my_counters_path, class:'btn btn-outline-success btn-block' %>
+        </div>
+    <% else %>
+        <div class='row mb-5'>
+            <%= link_to 'Sign In', new_user_session_path, class:'btn btn-outline-success btn-block' %>
+        </div>
+    <% end %>
+    <div class='row'>
+        <%= link_to 'Scan To Connect', scanner_index_path, class:'btn btn-outline-primary btn-block' %>
+    </div>
+</div>

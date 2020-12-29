@@ -80,12 +80,12 @@ class HeadcountsController < ApplicationController
     random_letters3 = (0...4).map { ('a'..'z').to_a[rand(26)] }.join
     random_letters4 = (0...4).map { ('a'..'z').to_a[rand(26)] }.join
 
-    headcount.qr_code = 'qr' + time_stamp + random_letters1 
-    headcount.entrance_code = 'entrance' + time_stamp + random_letters2 
-    headcount.exit_code = 'exit' + time_stamp + random_letters3 
-    headcount.stamp = 'stamp' + time_stamp + random_letters4
+    headcount.qr_code = 'telecounter' + time_stamp + random_letters1 + 'qr'
+    headcount.entrance_code = 'telecounter' + time_stamp + random_letters2 + 'entrance'
+    headcount.exit_code = 'telecounter' + time_stamp + random_letters3 + 'exit'
+    headcount.stamp = 'telecounter' + time_stamp + random_letters4 + 'stamp'
     if headcount.save
-      redirect_to headcounts_path
+      redirect_to pages_my_counters_path
     end
 
   end
@@ -103,10 +103,11 @@ class HeadcountsController < ApplicationController
   end
 
   def new_entrance
-    id = params[:id]
-    headcount = Headcount.find(id)
+    stamp = params[:id]
+    quant = params[:quant].to_i
+    headcount = Headcount.find_by_stamp(stamp)
     current_count = headcount.current_count 
-    current_count += 1 
+    current_count += quant
     headcount.current_count = current_count 
     headcount.save 
     @id = headcount.stamp
@@ -115,11 +116,13 @@ class HeadcountsController < ApplicationController
   end
 
   def new_exit
-    id = params[:id]
-    headcount = Headcount.find(id)
+    stamp = params[:id]
+    quant = params[:quant].to_i
+    headcount = Headcount.find_by_stamp(stamp)
     current_count = headcount.current_count 
     if current_count > 0
-      current_count -= 1 
+      current_count -= quant 
+      current_count = [current_count, 0].max
       headcount.current_count = current_count 
       headcount.save 
       @id = headcount.stamp

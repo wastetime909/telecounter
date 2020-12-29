@@ -23,6 +23,10 @@ require("jquery")
 //     navigator.serviceWorker.register('/service-worker.js', { scope: './' })
 // }
 
+if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/service-worker.js', { scope: './' })
+}
+
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 

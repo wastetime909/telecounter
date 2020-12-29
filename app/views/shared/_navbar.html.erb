@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color: #4a4e4d;'>
+    <a class="navbar-brand" href="#">TeleCounter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+        <li class="nav-item">
+            <%= link_to 'My Counters', pages_my_counters_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Change your password", edit_user_registration_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Sign Out", destroy_user_session_path, class:'nav-link', method: :delete %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class:'nav-link' %>
+        </li>
+        <% end %>
+    </ul>
+    </div>
+</nav>

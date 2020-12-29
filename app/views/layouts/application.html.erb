@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/sample_loggo_sm.png">
+    <meta name="theme-color" content="#8e2731">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,6 +21,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= render 'shared/navbar' %>
     <%= yield %>
   </body>
 </html>

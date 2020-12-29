@@ -1108,19 +1108,12 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zxing/library@^0.18.3":
-  version "0.18.3"
-  resolved "https://registry.yarnpkg.com/@zxing/library/-/library-0.18.3.tgz#50f20703cf3b7d357bd8801b23f27f24aa1f5e4d"
-  integrity sha512-7ny4JjUu2UfIiuyjewxeRZViXJ8GsSOoNZ+o6o0AdPvUQlaISdsGnIUVGDviJerEYeT1MKhaL7jUtjdYs3KO/Q==
+"@zxing/library@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@zxing/library/-/library-0.16.3.tgz#3d9d2a031f03b01b67ee6defc232aae106329f84"
+  integrity sha512-GjhP1eWfj76fn8JnipDXKEErgfNJO8CJb0bEgkZ14RLSo1z2U1wD7RUt609oRWYYq2gPQfK3X+Z159K4ecNzHQ==
   dependencies:
     ts-custom-error "^3.0.0"
-  optionalDependencies:
-    "@zxing/text-encoding" "~0.9.0"
-
-"@zxing/text-encoding@~0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@zxing/text-encoding/-/text-encoding-0.9.0.tgz#fb50ffabc6c7c66a0c96b4c03e3d9be74864b70b"
-  integrity sha512-U/4aVJ2mxI0aDNI8Uq0wEhMgY+u4CNtEb0om3+y3+niDAsoTCOB33UF0sxpzqzdqXLqmvc+vZyAt4O8pPdfkwA==
 
 abbrev@1:
   version "1.1.1"

@@ -3,17 +3,23 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1><%= @headcount.nickname %></h1>
-            <h3 class='text-info mt-4'>
+            <h2><%= @headcount.nickname %></h2>
+            <h4 class='text-info mt-4'>
                Max Capacity: <%= @headcount.max_count %>
-            </h3>
+            </h4>
+            <h4 data-controller='progress-bar'>
+                Current Capacity: 
+                <span id='<%= @headcount.stamp %>' data-target='progress-bar.progress_bar'>
+                    <%= @headcount.current_count %>
+                </span>
+            </h4>
         </div>
     </div>
     <div class='container mb-2'>
 
     </div>
     <div class="container mb-5">
-        <div class="accordion" id="accordionExample">
+        <div class="accordion mb-4" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="headingOne">
                 <h2 class="mb-0 text-center">
@@ -24,9 +30,12 @@
                 </div>
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body text-center">
-                    <%= image_tag @qr_img %>
-                </div>
+                    <div class="card-body text-center">
+                        <%= image_tag @entrance_img %>
+                    </div>
+                    <div class='card-footer text-center'>
+                        <%= link_to 'Go To Entrance Control Page', pages_admin_page_path(:id => @headcount.id, :type => 'entrance'), class:'btn btn-outline-success' %>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -38,9 +47,12 @@
                 </h2>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body text-center">
-                    <%= image_tag @exit_img %>
-                </div>
+                    <div class="card-body text-center">
+                        <%= image_tag @exit_img %>
+                    </div>
+                    <div class='card-footer text-center'>
+                        <%= link_to 'Go To Exit Control Page', pages_admin_page_path(:id => @headcount.id, :type => 'exit'), class:'btn btn-outline-success' %>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -52,11 +64,17 @@
                 </h2>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body text-center">
-                    <%= image_tag @qr_img %>
-                </div>
+                    <div class="card-body text-center">
+                        <%= image_tag @qr_img %>
+                    </div>
+                    <div class='card-footer text-center'>
+                        <%= link_to 'Go To Control Both Entrance and Exit', pages_admin_page_path(:id => @headcount.id, :type => 'both'), class:'btn btn-outline-success' %>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <%= link_to 'Back', pages_my_counters_path, class:'btn btn-success btn-block' %>
+
     </div>
 </main>

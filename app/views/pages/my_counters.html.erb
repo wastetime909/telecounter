@@ -1,7 +1,35 @@
 <div class='container mt-5'>
-    <% @headcounts.each do |head| %>
-        <%= link_to headcount_path(head.id) do %>
-            <%= head.current_count %>
-        <% end %>
+    <% if !@headcounts.blank? %>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>Counter Name</th>
+                    <th>Maximum Capacity</th>
+                    <th>Current Capacity</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @headcounts.each do |head| %>
+                <tr>
+                    <td><%= head.nickname %></td>
+                    <td><%= head.max_count %></td>
+                    <td>
+                    <span data-controller='progress-bar'>
+                        <span id='<%= head.stamp %>' data-target='progress-bar.progress_bar'>
+                            <%= head.current_count %>
+                        </span>
+                    </span>
+                    </td>
+                    <td>
+                    <%= link_to 'Check it out', headcount_path(head), class:'btn btn-sm btn-success'%>
+                    </td>
+                </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
     <% end %>
+    <%= link_to 'Create New Counter', new_headcount_path, class:'btn btn-outline-info' %>
 </div>
