@@ -1,24 +1,9 @@
-# README
+# Telecounter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Live update with total current number of visitors in premise. Seperate control for traffic flow for both exits and entrances. Admin user can grant app users different levels of control for either entrance or exit or both. 
+Control granting is done through simple scan of QR code.
 
-Things you may want to cover:
+Styling based on bootstrap.
+Backend based on Ruby on Rails 6 with actioncable and stimulus.js
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Progressive Web Application (PWA) ready.
